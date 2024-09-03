@@ -1,9 +1,10 @@
 {
   "name": "ra24.3",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "http-server.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "echo \"Error: no test specified\"",
+    "start": "node http-server.js"
   },
   "author": "",
   "license": "ISC",
