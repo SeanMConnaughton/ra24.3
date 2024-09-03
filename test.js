@@ -1,6 +1,6 @@
 const http = require('http');
 const assert = require('assert');
-const app = require('./app');  // Import the Express app
+const server = require('./app');  // Import the server instance
 
 function testHelloWorld() {
   const options = {
@@ -24,12 +24,18 @@ function testHelloWorld() {
         console.log('Test passed!');
       } catch (error) {
         console.error('Test failed:', error.message);
+      } finally {
+        // Close the server
+        server.close(() => {
+          console.log('Server closed');
+        });
       }
     });
   });
 
   req.on('error', (error) => {
     console.error('Request error:', error.message);
+    server.close();  // Ensure server is closed in case of error
   });
 
   req.end();
